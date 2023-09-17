@@ -9,6 +9,8 @@ const app = fastify();
 
 app.register(fastifyCors, {
   origin: '*',
+  methods: ['GET', 'POST', 'HEAD', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
 })
 
 app.register(getAllPromptsRoute);
@@ -17,7 +19,7 @@ app.register(createTranscriptionRoute);
 app.register(generateAICompletionRoute);
 
 app.listen({
-  port: 3333
+  port: 13333
 }).then(() => {
   console.log('HTTP Server Running!')
 })
